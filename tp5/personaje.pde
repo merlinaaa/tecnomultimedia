@@ -32,7 +32,7 @@ boolean tranki = false;
    
    }//cierre quieto
    
-  void Sprite(){      //FALTA SPRITE REGAR DIST. DIRECCIONES (U,P,L,R)
+  void Sprite(){      //FALTA SPRITE REGAR DIST. DIRECCIONES (U,D,L,R)
    for(int i = 0; i < derecha.length; i++){
     derecha[i] = loadImage("derecha"+i+".png");
     } //for derecha

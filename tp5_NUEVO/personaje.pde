@@ -1,31 +1,43 @@
-class Personaje {      // FALTA: sprite REGAR con tecla B.
+class Personaje {
   int maxImages = 3;
-  //Fondo f = new Fondo(0, 0);
   PImage[] derecha   = new PImage[maxImages];
   PImage[] izquierda = new PImage[maxImages];
   PImage[] arriba    = new PImage[maxImages];
   PImage[] abajo     = new PImage[maxImages];
   PImage regarFrente, regarIZQ, regarDER, regarUP;
   PImage frente;
-  int imageIndex = 0;    //estados para sprites
+  int imageIndex = 0;
   int posx, posy;
   boolean tranki = false;
   String  estado = "mover";
   String   regar = "abajo";
   String  direccion = "frente";
-  //  boolean activo = false;
 
-
+  //ALTERNATIVA SPRITE Sprite[2][4]
+  // [movimientoDirecciones] [izquierda,derecha,arriba,abajo]
+  // [direccionesAlRegar] [regarIzquierda,rDerecha,rArriba,rAbajo]
 
   Personaje(int _posx, int _posy) {
+
     posx = _posx;
     posy = _posy;
+    for (int i = 0; i < derecha.length; i++) {
+      derecha[i] = loadImage("derecha"+i+".png");
+    } //for derecha
+
+    for (int i2 = 0; i2 < izquierda.length; i2++) {
+      izquierda[i2] = loadImage("left"+i2+".png");
+    } //for Izquierda
+
+    for (int i3 = 0; i3 < arriba.length; i3++) {
+      arriba[i3] = loadImage("up"+i3+".png");
+    }
+
+    for (int i4 = 0; i4 < abajo.length; i4++) {
+      abajo[i4] = loadImage("front"+i4+".png");
+    }
   }
 
-  // void personajeMover(){
-  //   image(frente, posx,posy);
-
-  // }
 
   void Sprite() {        //caminar en distintas direcciones y regar
     frente = loadImage("front0.png");
@@ -52,9 +64,8 @@ class Personaje {      // FALTA: sprite REGAR con tecla B.
   } //cierre void SPRITE
 
 
-    void dibujarPersonaje(){        // ??????
+  void dibujarPersonaje() {        // ??????
     eventoTeclas();
-    Sprite();
   }
 
 
@@ -63,7 +74,7 @@ class Personaje {      // FALTA: sprite REGAR con tecla B.
     println(estado);
     println(keyCode);
     println(regar);
-    // Sprite();
+
     if (key == CODED) {
       if (keyCode == RIGHT) {
         direccion = "derecha";
@@ -92,7 +103,7 @@ class Personaje {      // FALTA: sprite REGAR con tecla B.
         regar = "regarArriba";
       }     //cierre arriba
     }//cierre CODED
- 
+
 
     if (direccion == "derecha") {
       image(derecha[imageIndex], posx, posy);
@@ -126,6 +137,4 @@ class Personaje {      // FALTA: sprite REGAR con tecla B.
       image(regarDER, posx-30, posy-20);
     }
   }
-
-
 }//cierre PERSONAJES CLASS

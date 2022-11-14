@@ -8,9 +8,9 @@ p.cargaImagenes();
 }
 
 void draw(){
+  println(mouseX, mouseY);
 p.dibujarPrincipal();
-//println("X " + mouseX);
-//println("Y " + mouseY);
+
 
 }
 
